@@ -1,7 +1,7 @@
 /* Basic styling for the body and overall container */
 body {
     font-family: Arial, sans-serif;
-    background-color: #777;
+    background-color: #222;
     /* Dark background */
     color: #eee;
     /* Light text color */
@@ -21,17 +21,9 @@ h1 {
     margin-bottom: 30px;
 }
 
-.container {
-    width: 100%;
-    min-width: 600px;
-    /* Minimum width for better readability */
-}
-
-
-
 /* Controls container - existing but perhaps adjust padding/margin */
 .controls {
-    background-color: #888;
+    background-color: #333;
     padding: 25px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
@@ -204,7 +196,6 @@ footer {
     width: 100%;
     box-sizing: border-box;
 }
-
 
 
 /* Mobile responsiveness: stack controls vertically */

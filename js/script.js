@@ -13,16 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Define notes with their Western and new Greek names, and offsets from A4
     const notes = [
         { westernName: "C", greekName: "Νη", a4Offset: -9, isBlack: false },
-        { westernName: "C#", greekName: "Νη#", a4Offset: -8, isBlack: true },
+        { westernName: "C#", greekName: "Νη+", a4Offset: -8, isBlack: true },
         { westernName: "D", greekName: "Πα", a4Offset: -7, isBlack: false },
-        { westernName: "D#", greekName: "Πα#", a4Offset: -6, isBlack: true },
+        { westernName: "D#", greekName: "Βου-", a4Offset: -6, isBlack: true },
         { westernName: "E", greekName: "Βου", a4Offset: -5, isBlack: false },
         { westernName: "F", greekName: "Γα", a4Offset: -4, isBlack: false },
-        { westernName: "F#", greekName: "Γα#", a4Offset: -3, isBlack: true },
+        { westernName: "F#", greekName: "Γα+", a4Offset: -3, isBlack: true },
         { westernName: "G", greekName: "Δι", a4Offset: -2, isBlack: false },
-        { westernName: "G#", greekName: "Δι#", a4Offset: -1, isBlack: true },
+        { westernName: "G#", greekName: "Κε-", a4Offset: -1, isBlack: true },
         { westernName: "A", greekName: "Κε", a4Offset: 0, isBlack: false }, // A4
-        { westernName: "A#", greekName: "Κε#", a4Offset: 1, isBlack: true },
+        { westernName: "A#", greekName: "Ζω-", a4Offset: 1, isBlack: true },
         { westernName: "B", greekName: "Ζω", a4Offset: 2, isBlack: false },
     ];
 
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (octave === 3) {
             primeSuffix = "";
         } else if (octave === 4) {
-            if (westernName === "B") {
+            if (westernName === "B" || westernName === "A#") {
                 primeSuffix = "᾽";
             } else {
                 primeSuffix = "";

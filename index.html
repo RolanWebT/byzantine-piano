@@ -1,79 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Byzantine Piano</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <h1>Byzantine Note Piano</h1>
 
-    <div class="controls">
-      <div class="control-panel">
-        <div class="tuning-control-group">
-          <label>Select Base Tuning:</label>
-          <div class="tuning-options">
-            <input type="radio" id="tuningLow" name="tuning" value="349.338" />
-            <label for="tuningLow">Low</label><br />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.png" type="image/png">
+  <title>Byzantine Piano</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 
-            <input type="radio" id="tuningMedium" name="tuning" value="392" />
-            <label for="tuningMedium">Medium</label><br />
+<body>
+  <h1>Byzantine Note Piano</h1>
 
-            <input
-              type="radio"
-              id="tuningStandard"
-              name="tuning"
-              value="440"
-              checked
-            />
-            <label for="tuningStandard">Standard</label>
-          </div>
+  <div class="controls">
+    <div class="control-panel">
+      <div class="tuning-control-group">
+        <label>Select Base Tuning:</label>
+        <div class="tuning-options">
+          <input type="radio" id="tuningLow" name="tuning" value="349.338" />
+          <label for="tuningLow">Low</label><br />
+
+          <input type="radio" id="tuningMedium" name="tuning" value="392" />
+          <label for="tuningMedium">Medium</label><br />
+
+          <input type="radio" id="tuningStandard" name="tuning" value="440" checked />
+          <label for="tuningStandard">Standard</label>
         </div>
-
-        <div class="instrument-control-group">
-          <label>Select Instrument:</label>
-          <div class="instrument-options">
-            <input
-              type="radio"
-              id="instrumentOrgan"
-              name="instrument"
-              value="organ"
-              checked
-            />
-            <label for="instrumentOrgan">Church Organ</label><br />
-
-            <input
-              type="radio"
-              id="instrumentFlute"
-              name="instrument"
-              value="flute"
-            />
-            <label for="instrumentFlute">Ney / Flute</label><br />
-
-            <input
-              type="radio"
-              id="instrumentGuitar"
-              name="instrument"
-              value="guitar"
-            />
-            <label for="instrumentGuitar">Guitar</label><br />
-          </div>
-        </div>
-        <p>
-          Current A4 Base Frequency: <span id="current-frequency"></span> Hz
-        </p>
       </div>
+
+      <div class="instrument-control-group">
+        <label>Select Instrument:</label>
+        <div class="instrument-options">
+          <input type="radio" id="instrumentOrgan" name="instrument" value="organ" checked />
+          <label for="instrumentOrgan">Church Organ</label><br />
+
+          <input type="radio" id="instrumentFlute" name="instrument" value="flute" />
+          <label for="instrumentFlute">Ney / Flute</label><br />
+
+          <input type="radio" id="instrumentGuitar" name="instrument" value="guitar" />
+          <label for="instrumentGuitar">Guitar</label><br />
+        </div>
+      </div>
+      <p>
+        Current A4 Base Frequency: <span id="current-frequency"></span> Hz
+      </p>
     </div>
+  </div>
 
-    <div class="container">
-      <div id="piano-keys"></div>
-    </div>
+  <div class="container">
+    <div id="piano-keys"></div>
+  </div>
 
-    <footer>
-      <p>Designed with passion by <strong>Rolan Tayarah</strong> &copy; 2025</p>
-    </footer>
+  <footer>
+    <p>Designed with passion by <strong>Rolan Tayarah</strong> &copy; 2025</p>
+  </footer>
 
-    <script src="js/script.js"></script>
-  </body>
+  <script src="js/script.js"></script>
+</body>
+
 </html>

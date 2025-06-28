@@ -13,22 +13,15 @@
   <h1>Byzantine Note Piano</h1>
 
   <div class="controls">
-    <div class="control-panel">
-      <div class="tuning-control-group">
-        <label>Select Base Tuning:</label>
-        <div class="tuning-options">
-          <input type="radio" id="tuningLow" name="tuning" value="349.338" />
-          <label for="tuningLow">Low</label><br />
+    <div class="tuning-options">
+      <input type="radio" id="tuningLow" name="tuning" value="349.338" />Low
 
-          <input type="radio" id="tuningMedium" name="tuning" value="392" />
-          <label for="tuningMedium">Medium</label><br />
+      <input type="radio" id="tuningMedium" name="tuning" value="392" checked />Medium
 
-          <input type="radio" id="tuningStandard" name="tuning" value="440" checked />
-          <label for="tuningStandard">Standard</label>
-        </div>
-      </div>
+      <input type="radio" id="tuningStandard" name="tuning" value="440" />Standard
+    </div>
 
-      <!-- 
+    <!-- 
       <div class="instrument-control-group">
         <label>Select Instrument:</label>
         <div class="instrument-options">
@@ -43,8 +36,9 @@
         </div>
       </div>
 -->
-      <p><span id="current-frequency"></span> Hz </p>
-    </div>
+    <div class="current-frequency"><span id="current-frequency"></span> Hz</div>
+  </div>
+
   </div>
 
   <div class="container">
@@ -52,7 +46,7 @@
   </div>
 
   <footer>
-    <p>Designed with passion by <strong>Rolan Tayarah</strong> &copy; 2025</p>
+    <p>Designed by <strong>Rolan Tayarah</strong> &copy; 2025</p>
   </footer>
 
   <script src="js/script.js"></script>

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Global Variables for Tuning and Instrument ---
     let baseA4Frequency; // Will be set by tuning selection
-    let currentInstrumentType = "choir"; // Default instrument selected at start
+
 
     // Function to get the Greek name for a given Western note name, applying primes based on octave.
     const getGreekNoteName = (westernName, octave) => {
@@ -173,38 +173,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Set initial gain to 0 to implement attack
             gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+            // Exponential ramp to 0.5 (or desired volume) over 0.05 seconds for a natural attack
+            gainNode.gain.exponentialRampToValueAtTime(
+                0.5,
+                audioCtx.currentTime + 0.05
+            );
 
-            // --- Instrument specific sound generation ---
-            switch (currentInstrumentType) {
-                case "organ":
-                    oscillator.type = "square"; // Richer harmonics, good for organ
-                    gainNode.gain.linearRampToValueAtTime(
-                        0.5,
-                        audioCtx.currentTime + 0.02
-                    ); // Fast attack for organ
-                    break;
-                case "flute":
-                    oscillator.type = "triangle"; // Softer, flute-like harmonics
-                    gainNode.gain.linearRampToValueAtTime(
-                        0.5,
-                        audioCtx.currentTime + 0.05
-                    ); // Quick attack for flute
-                    break;
-                case "guitar":
-                    oscillator.type = "sawtooth"; // Sawtooth has rich harmonics, good for strings
-                    gainNode.gain.linearRampToValueAtTime(
-                        0.5,
-                        audioCtx.currentTime + 0.005
-                    ); // Very fast attack for plucked sound
-                    break;
-                default: // Fallback to organ if something goes wrong
-                    oscillator.type = "square";
-                    gainNode.gain.linearRampToValueAtTime(
-                        0.5,
-                        audioCtx.currentTime + 0.2
-                    );
-                    break;
-            }
+            oscillator.type = "square"; // Use the selected instrument type    
 
             oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
             oscillator.connect(gainNode);
@@ -268,13 +243,12 @@ document.addEventListener("DOMContentLoaded", () => {
         setBaseTuning(event.target.value);
     });
 
-    // Event listener for instrument options
-    instrumentOptionsContainer.addEventListener("change", (event) => {
-        currentInstrumentType = event.target.value;
-        stopAllNotes(); // Stop any currently playing notes when instrument changes
-    });
 
-    // Keyboard support (unchanged)
+    // Keyboard support for playing notes
+    // Map keyboard keys to note names
+    // Note: The mapping is based on a standard Western piano layout, adjust as needed for your specific requirements.
+    // The mapping is designed to match the keys of a piano, where each key corresponds to a specific note.
+    // The keys 'a', 's', 'd', etc. correspond to notes C4, D4, E4, etc.
     const keyboardMap = {
         c: "B3",
         x: "A#3",

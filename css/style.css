@@ -9,15 +9,15 @@ body {
     align-items: center;
     min-height: 100vh;
     /* Full viewport height */
-    margin: 0;
-    padding: 20px;
+    margin: 0 auto;
+    padding: 10px;
     box-sizing: border-box;
 }
 
 h1 {
     color: #888;
     /* Lighter color for the heading */
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 /* Controls container - existing but perhaps adjust padding/margin */
@@ -27,7 +27,7 @@ h1 {
     padding: 25px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     /* Space between controls and piano */
     width: 100%;
     /* Take full width of parent (body) */
@@ -148,9 +148,9 @@ h1 {
 
 .white-key {
     background-color: #f0f0f0;
-    width: 60px;
+    width: 55px;
     /* Example width */
-    height: 200px;
+    height: 160px;
     /* Example height */
     margin-right: 2px;
     color: #333;
@@ -163,7 +163,7 @@ h1 {
     background-color: #333;
     width: 40px;
     /* Example width */
-    height: 120px;
+    height: 110px;
     /* Example height */
     margin-left: -20px;
     /* Overlap with white keys */

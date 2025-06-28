@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         baseA4Frequency = newBaseA4Frequency;
         currentFrequencySpan.textContent = baseA4Frequency.toFixed(3);
         stopAllNotes();
-        generatePianoKeys("F", 3, "F", 5);
+        generatePianoKeys("A", 3, "D", 5);
     }
 
     // --- Audio Context and Playback Functions ---
@@ -276,31 +276,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Keyboard support (unchanged)
     const keyboardMap = {
-        1: "F3",
-        w: "F#3",
-        s: "G3",
-        e: "G#3",
-        d: "A3",
-        q: "A#3",
-        a: "B3",
-        s: "C4",
-        e: "C#4",
-        d: "D4",
-        r: "D#4",
-        f: "E4",
-        g: "F4",
-        z: "F#4",
-        h: "G4",
-        u: "G#4",
-        j: "A4",
-        i: "A#4",
-        k: "B4",
-        l: "C5",
+        c: "B3",
+        x: "A#3",
+        z: "A3",
+        a: "C4",
+        w: "C#4",
+        s: "D4",
+        e: "D#4",
+        d: "E4",
+        f: "F4",
+        t: "F#4",
+        g: "G4",
+        y: "G#4",
+        h: "A4",
+        u: "A#4",
+        j: "B4",
+        k: "C5",
         o: "C#5",
-        2: "D5",
-        p: "D#5",
-        ";": "E5",
-        "'": "F5",
+        l: "D5"
     };
 
     document.addEventListener("keydown", (event) => {

@@ -1,8 +1,7 @@
 /* Basic styling for the body and overall container */
 body {
     font-family: Arial, sans-serif;
-    background-color: #222;
-    /* Dark background */
+
     color: #eee;
     /* Light text color */
     display: flex;
@@ -10,30 +9,32 @@ body {
     align-items: center;
     min-height: 100vh;
     /* Full viewport height */
-    margin: 0;
-    padding: 20px;
+    margin: 0 auto;
+    padding: 10px;
     box-sizing: border-box;
 }
 
 h1 {
-    color: #e0b04c;
-    /* Gold-like color */
-    margin-bottom: 30px;
+    color: #888;
+    /* Lighter color for the heading */
+    margin-bottom: 10px;
 }
 
 /* Controls container - existing but perhaps adjust padding/margin */
 .controls {
-    background-color: #333;
+    display: flex;
+    justify-content: space-between;
     padding: 25px 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
     /* Space between controls and piano */
     width: 100%;
     /* Take full width of parent (body) */
     max-width: 700px;
     /* Limit max width for desktop */
     box-sizing: border-box;
+    color: #777;
 }
 
 /* NEW: Flexbox container for side-by-side groups */
@@ -76,8 +77,8 @@ h1 {
     margin-bottom: 12px;
     font-size: 1.15em;
     font-weight: bold;
-    color: #e0b04c;
-    /* Gold color for main labels */
+    color: #777;
+    /* Lighter color for labels */
     text-align: center;
     /* Center the main group labels */
 }
@@ -105,8 +106,8 @@ h1 {
     vertical-align: middle;
     /* Align with text */
     cursor: pointer;
-    accent-color: #e0b04c;
-    /* Color for the radio button itself */
+    accent-color: #777;
+    /* Accent color for the radio button */
 }
 
 /* Current A4 Frequency display */
@@ -147,9 +148,9 @@ h1 {
 
 .white-key {
     background-color: #f0f0f0;
-    width: 60px;
+    width: 55px;
     /* Example width */
-    height: 200px;
+    height: 160px;
     /* Example height */
     margin-right: 2px;
     color: #333;
@@ -162,7 +163,7 @@ h1 {
     background-color: #333;
     width: 40px;
     /* Example width */
-    height: 120px;
+    height: 110px;
     /* Example height */
     margin-left: -20px;
     /* Overlap with white keys */
@@ -190,7 +191,7 @@ footer {
     padding: 20px;
     font-size: 0.9em;
     color: #888;
-    background-color: #1a1a1a;
+
     /* Even darker background for the footer */
     border-top: 1px solid #444;
     width: 100%;

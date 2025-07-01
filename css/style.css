@@ -110,6 +110,15 @@ h1 {
     /* Accent color for the radio button */
 }
 
+/* Styling for the instrument selection dropdown */
+#instrumentSelect {
+    background-color: #333;
+    color: #f0f0f0;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+
 /* Current A4 Frequency display */
 .controls p {
     margin-top: 15px;

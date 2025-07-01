@@ -6,9 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const pianoKeysContainer = document.getElementById("piano-keys");
     const currentFrequencySpan = document.getElementById("current-frequency");
     const tuningOptionsContainer = document.querySelector(".tuning-options");
-    const instrumentOptionsContainer = document.querySelector(
-        ".instrument-options"
-    ); // Get the container for instrument radio buttons
+    const instrumentSelect = document.getElementById('instrumentSelect'); // Target the new select element
 
     // Define notes with their Western and new Greek names, and offsets from A4
     const notes = [
@@ -28,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Global Variables for Tuning and Instrument ---
     let baseA4Frequency; // Will be set by tuning selection
-
+    let currentInstrumentType = instrumentSelect.value; // Get initial value from select
 
     // Function to get the Greek name for a given Western note name, applying primes based on octave.
     const getGreekNoteName = (westernName, octave) => {
@@ -173,13 +171,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Set initial gain to 0 to implement attack
             gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-            // Exponential ramp to 0.5 (or desired volume) over 0.05 seconds for a natural attack
-            gainNode.gain.exponentialRampToValueAtTime(
-                0.5,
-                audioCtx.currentTime + 0.05
-            );
 
-            oscillator.type = "square"; // Use the selected instrument type    
+            // --- Instrument specific sound generation ---
+            switch (currentInstrumentType) {
+                case 'flute': // Flute sound
+                    oscillator.type = 'triangle';
+                    gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.05); // Quick attack: 50 milliseconds
+                    break;
+
+                case 'trumpet': // Trumpet sound
+                    oscillator.type = 'sawtooth';
+                    gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.1); // Slower attack: 100 milliseconds
+                    break;
+
+                default: // Fallback to flute
+                    oscillator.type = 'triangle';
+                    gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.05);
+                    break;
+            }
 
             oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
             oscillator.connect(gainNode);
@@ -190,21 +199,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+
     function stopNote(keyElement) {
         const note = keyElement.dataset.note;
         if (oscillators[note]) {
-            keyElement.classList.remove("active");
+            keyElement.classList.remove('active');
             const { oscillator, gainNode } = oscillators[note];
 
             gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
-            // Exponential ramp to 0.001 (near silence) over 0.1 seconds for a natural release
-            gainNode.gain.exponentialRampToValueAtTime(
-                0.001,
-                audioCtx.currentTime + 0.1
-            );
 
+            let releaseTime = 0.3; // Default release time (good for flute)
+
+            if (currentInstrumentType === 'trumpet') {
+                releaseTime = 0.8; // Longer decay for a sustained brass note
+            }
+
+            // Exponential ramp to near silence over the defined release time
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + releaseTime);
             // Stop the oscillator after the release phase
-            oscillator.stop(audioCtx.currentTime + 0.1);
+            oscillator.stop(audioCtx.currentTime + releaseTime);
+
             oscillator.onended = () => {
                 oscillator.disconnect();
                 gainNode.disconnect();
@@ -233,14 +247,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Event Listeners and Initial Setup ---
 
     // Initial tuning setup (sets baseA4Frequency and generates keys)
-    const initialCheckedTuningValue = document.querySelector(
-        'input[name="tuning"]:checked'
-    ).value;
+    const initialCheckedTuningValue = document.querySelector('input[name="tuning"]:checked').value;
     setBaseTuning(initialCheckedTuningValue);
 
     // Event listener for tuning options
-    tuningOptionsContainer.addEventListener("change", (event) => {
+    tuningOptionsContainer.addEventListener('change', (event) => {
         setBaseTuning(event.target.value);
+    });
+
+    // Event listener for instrument selection (new select element)
+    instrumentSelect.addEventListener('change', (event) => {
+        currentInstrumentType = event.target.value;
+        stopAllNotes(); // Stop any currently playing notes when instrument changes
     });
 
 
